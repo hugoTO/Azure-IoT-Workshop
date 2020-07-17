@@ -1,0 +1,104 @@
+﻿@{
+    ViewBag.Title = "IOT Dashboard";
+}
+
+@section scripts{
+    <script src="~/Scripts/Chart.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.10.4.custom.min.js"></script>  
+    <script src="~/Assets/js/widgetLayout.js"></script>
+    <script src="~/Assets/js/realtime.js"></script>
+}
+
+<div class="dashboard-page">
+
+    <div id="feedback-notify" class="feedback-notify">
+        <span id ="feedback-icon" class="feedback-notify-icon glyphicon"></span>
+        <span id ="feedback-text" class="feedback-notify-text"></span>
+    </div>
+
+    <!--Widget-->
+    <div class="main-page">
+
+        <div class="line-chart-panel">
+            <!--Tempture Line Chart-->
+            <div class="widget-wrapper col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="widget-card line-chart-card">
+                    <div class="widget-card-title">Temperature (°C)</div>
+                    <div class="widget-card-content">
+                        <canvas id="line-chart-tempture"></canvas>
+                    </div>
+                </div>   
+            </div>
+            <!--Humidity Line Chart-->
+            <div class="widget-wrapper col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="widget-card line-chart-card">
+                    <div class="widget-card-title">Humidity (%)</div>
+                    <div class="widget-card-content">
+                        <canvas id="line-chart-humidity"></canvas>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="c2d-panel">
+            <!--Device Connected List-->
+            <div class="widget-wrapper col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                <div class="widget-card line-chart-card">
+                    <div class="widget-card-title">Device Status</div>
+                    <div class="widget-card-content" id="device-connect-wrapper">
+
+                        <div class="device-row col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="device-row-id-icon-wrapper col-lg-5 col-md-5 col-sm-5 col-xs-5">Device ID</div>
+                            <div class="device-row-signal-wrapper col-lg-2 col-md-2 col-sm-2 col-xs-2">Running</div>
+                            <div class="device-row-signal-wrapper col-lg-2 col-md-2 col-sm-2 col-xs-2">Alert</div>
+                            <div class="device-row-switcher col-lg-3 col-md-3 col-sm-3 col-xs-3">Off / On</div>
+                        </div>  
+                        
+                        <div id ="device-connect-content-wrapper" class="device-connect-content-wrapper"></div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!--Tempture Rule Controller-->
+            <div class="widget-wrapper col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                <div class="widget-card line-chart-card">
+                    <div class="widget-card-title">Tempture Alert Rule</div>
+                    <div class="widget-card-content">
+
+                        <div class="alarm-rule-wrapper"> 
+                            <div class="big-title">
+                                <span id="new-temperature-rule">-</span>
+                                ℃
+                            </div>                     
+                        </div>
+
+                        <div id="js-slider"></div>
+
+                        <div class="bottom-btn-wrapper">
+                            <button id="send-new-rule-command" class="btn-simple">Apply</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <!--Alarm List-->
+    <div class="alarm-list">
+
+        <div class="alarm-filter-header">
+            <h4 class="alarm-filter-title">Alert Filter</h4>
+            <select id ="alarm-filter-select" class="alarm-filter-select">
+                <option>All</option>
+            </select>
+        </div>
+
+        <div class="alarm-row-wrapper"></div>
+    </div>
+</div>
